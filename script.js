@@ -1,16 +1,19 @@
 let humanScore = 0
 let computerScore = 0
-let options = ["rock", "paper", "scissors"]
+
+const ROCK = "rock"
+const PAPER = "paper"
+const SCISSORS = "scissors"
 
 function getComputerChoice() {
     let num = Math.random()
 
     if (num < 0.33) {
-        return options[0]
+        return ROCK
     } else if (num < 0.66) {
-        return options[1]
+        return PAPER
     } else if (num < 0.99) {
-        return options[2]
+        return SCISSORS
     } else {
         console.log("rerolling...")
         return getComputerChoice()
@@ -20,39 +23,39 @@ function getComputerChoice() {
 function getHumanChoice() {
     let answer = prompt("Enter rock, paper, or scissors: ").toLowerCase()
 
-    if (answer == "rock") {
-        return options[0]
-    } else if (answer == "paper") {
-        return options[1]
-    } else if (answer == "scissors") {
-        return options[2]
+    if (answer == ROCK) {
+        return ROCK
+    } else if (answer == PAPER) {
+        return PAPER
+    } else if (answer == SCISSORS) {
+        return SCISSORS
     }
 }
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice == computerChoice) {
         console.log("Draw!")
-    } else if (humanChoice == options[0]) {
-        if (computerChoice == options[1]) {
+    } else if (humanChoice == ROCK) {
+        if (computerChoice == PAPER) {
             computerScore += 1
             console.log("You lose! Paper beats rock.")
-        } else if (computerChoice == options[2]) {
+        } else if (computerChoice == SCISSORS) {
             humanScore += 1
             console.log("You win! Rock beats scissors.")
         }
-    } else if (humanChoice == options[1]) {
-        if (computerChoice == options[0]) {
+    } else if (humanChoice == PAPER) {
+        if (computerChoice == ROCK) {
             humanScore += 1
             console.log("You win! Paper beats rock.")
-        } else if (computerChoice == options[2]) {
+        } else if (computerChoice == SCISSORS) {
             computerScore += 1
             console.log("You lose! Scissors beats paper.")
         }
-    } else if (humanChoice == options[2]) {
-        if (computerChoice == options[0]) {
+    } else if (humanChoice == SCISSORS) {
+        if (computerChoice == ROCK) {
             computerScore += 1
             console.log("You lose! Rock beats scissors.")
-        } else if (computerChoice == options[1]) {
+        } else if (computerChoice == PAPER) {
             humanScore += 1
             console.log("You win! Scissors beats paper.")
         }
