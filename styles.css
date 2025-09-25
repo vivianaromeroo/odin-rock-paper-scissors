@@ -1,0 +1,44 @@
+h1 {
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+img {
+    width: 200px;
+    height: auto;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+#rock {
+    background-color: lightcoral;
+}
+
+#paper {
+    background-color: lightgreen;
+}
+
+#scissors {
+    background-color: lightblue;
+}
+
+.description {
+    font-size: larger;
+    font-weight: bold;
+    padding-top: 20px;
+}
+

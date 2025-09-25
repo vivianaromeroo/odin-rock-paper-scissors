@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RockPaperScissors</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
 </head>
 <body>
-    <h1>Open the console to see your results!</h1>
+    <h1>Rock, Paper, Scissors!</h1>
+    <h2 class="Round"></h2>
+
+    <div class="buttons">
+        <button class="button" id="rock">
+            <img src="images/rock.png" alt="rock">
+            <div class="description">Rock</div>
+        </button>
+
+        <button class="button" id="paper">
+            <img src="images/paper.png" alt="paper">
+            <div class="description">Paper</div>
+        </button>
+
+        <button class="button" id="scissors">
+            <img src="images/scissors.png" alt="scissors">
+            <div class="description">Scissors</div>
+        </button>
+    </div>
+
+
+    <div class="outcome">
+        <div class="result"></div>
+        <div class="explanation"></div>
+    </div>
+
+    <div class="score">
+        <div class="numbers"></div>
+        <div class="players"></div>
+    </div>
 </body>
 </html>
