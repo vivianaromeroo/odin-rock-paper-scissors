@@ -48,11 +48,11 @@ function displayResults(hChoice, cChoice) {
     } else if (rules[hChoice] === cChoice) {
         humanScore++
         resultEl.textContent = "You win!"
-        outcomeEl.textContent = `${hChoice} beats ${cChoice}.`
+        outcomeEl.textContent = `${hChoice} beats ${cChoice}`
     } else {
         computerScore++
         resultEl.textContent = "You lose!"
-        outcomeEl.textContent = `${cChoice} beats ${hChoice}.`
+        outcomeEl.textContent = `${cChoice} beats ${hChoice}`
     }
 
     numbersEl.textContent = `${humanScore} - ${computerScore}`
@@ -72,6 +72,26 @@ function endGame() {
     } else {
         outcome.textContent = "Draw game!"
     }
+
+    const tryAgainBtn = document.querySelector(".try-again")
+    tryAgainBtn.style.display = "inline-block"
+    tryAgainBtn.addEventListener("click", () => {
+        humanScore = 0
+        computerScore = 0
+        round = 1
+
+        resultEl.textContent = ""
+        outcomeEl.textContent = ""
+        numbersEl.textContent = `${humanScore} - ${computerScore}`
+        roundEl.textContent = "Round " + round
+        document.querySelector(".final").textContent = ""
+
+        document.querySelectorAll(".button").forEach(button => {
+            button.disabled = false
+        })
+
+        tryAgainBtn.style.display = "none"
+    })
 }
 
 const parentContainer = document.querySelector('.buttons')
