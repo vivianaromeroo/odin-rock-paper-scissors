@@ -1,5 +1,6 @@
 let humanScore = 0
 let computerScore = 0
+let round = 1
 
 const ROCK = "rock"
 const PAPER = "paper"
@@ -12,27 +13,14 @@ function getComputerChoice() {
         return ROCK
     } else if (num < 0.66) {
         return PAPER
-    } else if (num < 0.99) {
-        return SCISSORS
     } else {
-        console.log("rerolling...")
-        return getComputerChoice()
-    }
-}
-
-function getHumanChoice() {
-    let answer = prompt("Enter rock, paper, or scissors: ").toLowerCase()
-
-    if (answer == ROCK) {
-        return ROCK
-    } else if (answer == PAPER) {
-        return PAPER
-    } else if (answer == SCISSORS) {
         return SCISSORS
     }
 }
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
+    let computerChoice = getComputerChoice()
+
     if (humanChoice == computerChoice) {
         console.log("Draw!")
     } else if (humanChoice == ROCK) {
@@ -60,18 +48,19 @@ function playRound(humanChoice, computerChoice) {
             console.log("You win! Scissors beats paper.")
         }
     }
-
     console.log("Current Score: " + humanScore + " - " + computerScore)
+
+    if (round < 5) {
+        round++
+    } else {
+        document.querySelectorAll(".button").forEach(button => {
+            button.disabled = true;
+        })
+        endGame()
+    }
 }
 
-function playGame() {
-    for (let i = 0; i <= 4; i++) {
-        let humanSelection = getHumanChoice()
-        let computerSelection = getComputerChoice()
-        console.log("Round " + (i + 1))
-        playRound(humanSelection, computerSelection)
-    }
-
+function endGame() {
     if (humanScore > computerScore) {
         console.log("You win the game!")
     } else if (computerScore > humanScore) {
@@ -81,4 +70,11 @@ function playGame() {
     }
 }
 
-// playGame()
+document.addEventListener("DOMContentLoaded", () => {
+  const parentContainer = document.querySelector('.buttons');
+    parentContainer.addEventListener('click', function(event) {
+        const clickedButton = event.target.closest("button");
+        if (!clickedButton) return; // clicked outside a button
+        playRound(clickedButton.id);
+    })
+})
